@@ -1,0 +1,12 @@
+.env
+.env.local
+certbot/conf/live/
+certbot/conf/archive/
+certbot/conf/renewal/
+certbot/conf/renewal-hooks/
+certbot/www/
+/e-book-web
+/e-book-api
+
+e-book-api/
+e-book-web/
