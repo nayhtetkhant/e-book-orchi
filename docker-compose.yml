@@ -34,15 +34,15 @@ services:
         environment:
             - APP_ENV=${APP_ENV:-production}
             - APP_DEBUG=${APP_DEBUG:-false}
-            - APP_URL=${APP_URL:-https://e-book-be.tintaungkhant.com}
-            - FRONTEND_URL=${FRONTEND_URL:-https://e-book-fe.tintaungkhant.com}
+            - APP_URL=${APP_URL:-https://e-book-api.nayhtetkhant.com}
+            - FRONTEND_URL=${FRONTEND_URL:-https://e-book.nayhtetkhant.com}
             - DB_CONNECTION=mysql
             - DB_HOST=mysql
             - DB_PORT=3306
             - DB_DATABASE=${DB_DATABASE:-e_book_api}
             - DB_USERNAME=${DB_USERNAME:-root}
             - DB_PASSWORD=${DB_PASSWORD:-password1@2#}
-            - SANCTUM_STATEFUL_DOMAINS=${SANCTUM_STATEFUL_DOMAINS:-e-book-fe.tintaungkhant.com,e-book-be.tintaungkhant.com}
+            - SANCTUM_STATEFUL_DOMAINS=${SANCTUM_STATEFUL_DOMAINS:-e-book-fe.tintaungkhant.com,e-book-be.tintaungkhant.com,e-book.nayhtetkhant.com,e-book-api.nayhtetkhant.com}
         volumes:
             - ./e-book-api/storage:/var/www/storage
             - ./e-book-api/bootstrap/cache:/var/www/bootstrap/cache
@@ -61,7 +61,7 @@ services:
             context: ./e-book-web
             dockerfile: Dockerfile
             args:
-                - API_BASE_URL=${API_BASE_URL:-https://e-book-be.tintaungkhant.com}
+                - API_BASE_URL=${API_BASE_URL:-https://e-book.nayhtetkhant.com}
         container_name: e-book-web
         restart: unless-stopped
         env_file:
@@ -70,7 +70,7 @@ services:
             - NODE_ENV=production
             - PORT=3000
             - HOSTNAME=0.0.0.0
-            - API_BASE_URL=${API_BASE_URL:-https://e-book-be.tintaungkhant.com}
+            - API_BASE_URL=${API_BASE_URL:-https://e-book-api.nayhtetkhant.com}
         expose:
             - "3000"
         depends_on:
